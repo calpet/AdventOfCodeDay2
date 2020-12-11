@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace AdventOfCodeDay2
 {
@@ -6,11 +7,13 @@ namespace AdventOfCodeDay2
     {
         static void Main(string[] args)
         {
+            int occurenceOfLetter = 0;
             PasswordManager pm = new PasswordManager();
-            foreach (var pwd in pm.GivenPasswords)
+            foreach (var pwd in pm.GetPasswordsWithoutRequirements())
             {
-                Console.WriteLine(pwd);
             }
+
+            Console.WriteLine(occurenceOfLetter);
         }
     }
 }
