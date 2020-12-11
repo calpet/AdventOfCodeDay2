@@ -6,7 +6,11 @@ namespace AdventOfCodeDay2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            PasswordManager pm = new PasswordManager();
+            foreach (var pwd in pm.GivenPasswords)
+            {
+                Console.WriteLine(pwd);
+            }
         }
     }
 }
