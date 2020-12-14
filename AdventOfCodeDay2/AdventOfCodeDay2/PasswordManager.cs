@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCodeDay2
 {
     public class PasswordManager
     {
-        private string[] _givenPasswords;
-        private string[] _givenRequirements;
-        private string[] _cleanPasswords;
+        public int MinimalOccurence { get; private set; }
+        public int MaximumOccurence { get; private set; }
+        public char RequiredLetter { get; set; }
+        private List<string> ValidPasswords { get; set; }
 
         public string[] GivenPasswords
         {
@@ -21,36 +23,48 @@ namespace AdventOfCodeDay2
             }
         }
 
-        public string[] SplitRequirementsFromGivenPasswords()
+        public string SplitRequirementsFromGivenPassword(string password)
         {
-            string[] passwords = GivenPasswords;
-            _givenRequirements = new string[passwords.Length];
-
-            for (int i = 0; i < passwords.Length; i++)
-            {
-                int index = passwords[i].IndexOf(':');
-                string req = passwords[i].Substring(0, index);
-                _givenRequirements[i] = req;
-            }
-
-            return _givenRequirements;
+            int index = password.IndexOf(':');
+            string requirement = password.Substring(0, index);
+            return requirement;
         }
 
-        public string[] GetPasswordsWithoutRequirements()
+        public string GetPasswordWithoutRequirements(string password)
         {
-            string[] passwords = GivenPasswords;
-            _cleanPasswords = new string[passwords.Length];
-
-            for (int i = 0; i < passwords.Length; i++)
-            {
-                int index = passwords[i].IndexOf(':');
-                string password = passwords[i].Substring(index + 1);
-                _cleanPasswords[i] = password;
-
-            }
-
-            return _cleanPasswords;
+            int index = password.IndexOf(':');
+            string cleanPassword = password.Substring(index + 1);
+            return cleanPassword;
         }
 
+        public int[] SetOccurenceOfRequirements(string requirement)
+        {
+            string[] numbers = Regex.Split(requirement, @"\D+");
+            int[] parsedNumbers = new int[numbers.Length];
+            int index = 0;
+            foreach (var value in numbers)
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    parsedNumbers[index] = Convert.ToInt32(value);
+                    index++;
+                }
+            }
+
+            return parsedNumbers;
+        }
+
+        public char GetRequirementLetter(string requirement)
+        {
+            char letter = ' ';
+
+            for (int i = 0; i < requirement.Length; i++)
+            {
+                int index = requirement.IndexOf(' ');
+                string password = requirement.Substring(index + 1);
+                letter = Convert.ToChar(password);
+            }
+            return letter;
+        }
     }
 }
