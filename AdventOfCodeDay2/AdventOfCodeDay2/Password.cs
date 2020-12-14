@@ -6,10 +6,10 @@ namespace AdventOfCodeDay2
 {
     public class PasswordModel
     {
-        public string Password { get; set; }
-        public char RequiredLetter { get; set; }
-        public int MinimalOccurence { get; set; }
-        public int MaximumOccurence { get; set; }
+        public string Password { get; private set; }
+        public char RequiredLetter { get; private set; }
+        public int MinimalOccurence { get; private set; }
+        public int MaximumOccurence { get; private set; }
         public bool IsValid { get; set; }
 
         public PasswordModel(string password, char requiredLetter, int minimalOccurence, int maximumOccurence, bool isValid = false)
