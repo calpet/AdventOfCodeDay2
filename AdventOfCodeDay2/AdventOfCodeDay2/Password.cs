@@ -20,5 +20,6 @@ namespace AdventOfCodeDay2
             MaximumOccurence = maximumOccurence;
             IsValid = isValid;
         }
+
     }
 }
