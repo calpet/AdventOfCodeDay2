@@ -6,9 +6,13 @@ namespace AdventOfCodeDay2
     {
         static void Main(string[] args)
         {
+            #region First assignment:
             AlgorithmHandler algo = new AlgorithmHandler();
-            int amountOfValidPasswords = algo.StartFirstAssignment(new PasswordManager());
+            int amountOfValidPasswords = algo.StartFirstAssignment(new PasswordManagerA());
             Console.WriteLine("Amount of valid passwords is: " + amountOfValidPasswords);
+            #endregion
+
+
         }
 
     }

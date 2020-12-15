@@ -10,13 +10,13 @@ namespace AdventOfCodeDay2
         /// <summary>
         /// This is a method responsible for starting the algorithms of the first assignment.
         /// </summary>
-        /// <param name="passwords"></param>
+        /// <param name="passwordManager"></param>
         /// <returns>Amount of valid passwords.</returns>
-        public int StartFirstAssignment(PasswordManager passwordManager)
+        public int StartFirstAssignment(PasswordManagerA passwordManager)
         {
             int amountOfValidPasswords = 0;
 
-            string[] allPasswords = passwordManager.GivenPasswords;
+            string[] allPasswords = passwordManager.GivenPasswords();
             foreach (var pwd in allPasswords)
             {
                 string plainPassword = passwordManager.GetPasswordWithoutRequirements(pwd);
@@ -33,6 +33,12 @@ namespace AdventOfCodeDay2
             }
 
             return amountOfValidPasswords;
+        }
+
+        public int StartSecondAssignment(PasswordManagerB passwordManager)
+        {
+            string[] passwords = passwordManager.GivenPasswords();
+            return 1;
         }
     }
 }

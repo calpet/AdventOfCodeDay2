@@ -10,6 +10,8 @@ namespace AdventOfCodeDay2
         public char RequiredLetter { get; private set; }
         public int MinimalOccurence { get; private set; }
         public int MaximumOccurence { get; private set; }
+        public int FirstPosition { get; set; }
+        public int SecondPosition { get; set; }
         public bool IsValid { get; set; }
 
         public PasswordModel(string password, char requiredLetter, int minimalOccurence, int maximumOccurence, bool isValid = false)

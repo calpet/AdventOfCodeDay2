@@ -7,22 +7,13 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCodeDay2
 {
-    public class PasswordManager
+    public class PasswordManagerA 
     {
-        public int MinimalOccurence { get; private set; }
-        public int MaximumOccurence { get; private set; }
-        public char RequiredLetter { get; set; }
-        private List<string> ValidPasswords { get; set; }
-
-        public string[] GivenPasswords
+        public string[] GivenPasswords()
         {
-            get
-            {
-                string[] givenPasswords = File.ReadAllLines("Passwords.txt");
-                return givenPasswords;
-            }
+            string[] givenPasswords = File.ReadAllLines("Passwords.txt");
+            return givenPasswords;
         }
-
         public string SplitRequirementsFromGivenPassword(string password)
         {
             int index = password.IndexOf(':');
@@ -66,5 +57,7 @@ namespace AdventOfCodeDay2
             }
             return letter;
         }
+
+        
     }
 }
