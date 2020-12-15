@@ -21,5 +21,19 @@ namespace AdventOfCodeDay2
             IsValid = isValid;
         }
 
+        public static bool IsPasswordValid(PasswordModel pModel)
+        {
+            int occurenceOfLetter = 0;
+            for (int i = 0; i < pModel.Password.Length; i++)
+            {
+
+                if (pModel.Password[i] == pModel.RequiredLetter)
+                {
+                    occurenceOfLetter++;
+                }
+            }
+
+            return occurenceOfLetter >= pModel.MinimalOccurence && occurenceOfLetter <= pModel.MaximumOccurence;
+        }
     }
 }

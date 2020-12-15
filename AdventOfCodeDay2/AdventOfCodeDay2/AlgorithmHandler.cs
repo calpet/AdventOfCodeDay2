@@ -11,7 +11,7 @@ namespace AdventOfCodeDay2
         /// This is a method responsible for starting the algorithms of the first assignment.
         /// </summary>
         /// <param name="passwords"></param>
-        /// <returns>Amount of valid password.</returns>
+        /// <returns>Amount of valid passwords.</returns>
         public int StartFirstAssignment(PasswordManager passwordManager)
         {
             int amountOfValidPasswords = 0;
@@ -25,7 +25,7 @@ namespace AdventOfCodeDay2
                 char reqLetter = passwordManager.GetRequirementLetter(requirement);
                 PasswordModel pModel = new PasswordModel(plainPassword, reqLetter, occurences[0], occurences[1]);
 
-                pModel.IsValid = IsPasswordValid(pModel);
+                pModel.IsValid = PasswordModel.IsPasswordValid(pModel);
                 if (pModel.IsValid)
                 {
                     amountOfValidPasswords++;
@@ -33,21 +33,6 @@ namespace AdventOfCodeDay2
             }
 
             return amountOfValidPasswords;
-        }
-
-        public static bool IsPasswordValid(PasswordModel pModel)
-        {
-            int occurenceOfLetter = 0;
-            for (int i = 0; i < pModel.Password.Length; i++)
-            {
-
-                if (pModel.Password[i] == pModel.RequiredLetter)
-                {
-                    occurenceOfLetter++;
-                }
-            }
-
-            return occurenceOfLetter >= pModel.MinimalOccurence && occurenceOfLetter <= pModel.MaximumOccurence;
         }
     }
 }
