@@ -14,50 +14,10 @@ namespace AdventOfCodeDay2
             string[] givenPasswords = File.ReadAllLines("Passwords.txt");
             return givenPasswords;
         }
-        public string SplitRequirementsFromGivenPassword(string password)
+        public string[] SplitPasswordString(string password)
         {
-            int index = password.IndexOf(':');
-            string requirement = password.Substring(0, index);
-            return requirement;
+            string[] splittedString = Regex.Split(password, @"[^0-9a-zA-Z]").Where(s => !String.IsNullOrEmpty(s)).ToArray();
+            return splittedString;
         }
-
-        public string GetPasswordWithoutRequirements(string password)
-        {
-            int index = password.IndexOf(':');
-            string cleanPassword = password.Substring(index + 1);
-            return cleanPassword;
-        }
-
-        public int[] GetNumbersFromRequirement(string requirement)
-        {
-            string[] numbers = Regex.Split(requirement, @"\D+");
-            int[] parsedNumbers = new int[numbers.Length];
-            int index = 0;
-            foreach (var value in numbers)
-            {
-                if (!String.IsNullOrEmpty(value))
-                {
-                    parsedNumbers[index] = Convert.ToInt32(value);
-                    index++;
-                }
-            }
-
-            return parsedNumbers;
-        }
-
-        public char GetRequirementLetter(string requirement)
-        {
-            char letter = ' ';
-
-            for (int i = 0; i < requirement.Length; i++)
-            {
-                int index = requirement.IndexOf(' ');
-                string password = requirement.Substring(index + 1);
-                letter = Convert.ToChar(password);
-            }
-            return letter;
-        }
-
-        
     }
 }

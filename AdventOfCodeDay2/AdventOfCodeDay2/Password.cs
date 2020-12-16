@@ -15,7 +15,7 @@ namespace AdventOfCodeDay2
         public int SecondPosition { get; set; }
         public bool IsValid { get; set; }
 
-        public PasswordModel(string password, char requiredLetter, int minimalOccurence, int maximumOccurence, bool isValid)
+        public PasswordModel(int minimalOccurence, int maximumOccurence, char requiredLetter, string password, bool isValid)
         {
             Password = password;
             RequiredLetter = requiredLetter;
@@ -24,7 +24,7 @@ namespace AdventOfCodeDay2
             IsValid = isValid;
         }
 
-        public PasswordModel(string password, char requiredLetter, int firstPosition, int secondPosition)
+        public PasswordModel(int firstPosition, int secondPosition, char requiredLetter, string password)
         {
             Password = password;
             RequiredLetter = requiredLetter;
@@ -41,8 +41,8 @@ namespace AdventOfCodeDay2
         public static bool IsPasswordValidB(PasswordModel pModel)
         {
             bool isValid = false;
-            int firstPos = pModel.FirstPosition - 1;
-            int secondPos = pModel.SecondPosition - 1;
+            int firstPos = pModel.FirstPosition; 
+            int secondPos = pModel.SecondPosition;
 
             if (pModel.Password[firstPos] == pModel.RequiredLetter && pModel.Password[secondPos] == pModel.RequiredLetter)
             {

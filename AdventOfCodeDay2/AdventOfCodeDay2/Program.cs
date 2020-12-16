@@ -13,10 +13,8 @@ namespace AdventOfCodeDay2
             #endregion
 
             #region Second assignment:
-
             amountOfValidPasswords = algo.StartSecondAssignment(new PasswordManager());
             Console.WriteLine("Amount of valid passwords in the second assignment is: " + amountOfValidPasswords);
-
             #endregion
 
 
