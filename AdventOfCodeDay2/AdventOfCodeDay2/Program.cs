@@ -7,7 +7,7 @@ namespace AdventOfCodeDay2
         static void Main(string[] args)
         {
             #region First assignment:
-            AlgorithmHandler algo = new AlgorithmHandler();
+            AlgorithmManager algo = new AlgorithmManager();
             int amountOfValidPasswords = algo.StartFirstAssignment(new PasswordManager());
             Console.WriteLine("Amount of valid passwords in the first assignment is: " + amountOfValidPasswords);
             #endregion

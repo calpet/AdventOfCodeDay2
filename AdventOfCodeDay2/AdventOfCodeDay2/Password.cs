@@ -11,7 +11,7 @@ namespace AdventOfCodeDay2
         public char RequiredLetter { get; private set; }
         public int MinimalOccurence { get; private set; }
         public int MaximumOccurence { get; private set; }
-        public int FirstPosition { get; set; }
+        public int FirstPosition { get;  }
         public int SecondPosition { get; set; }
         public bool IsValid { get; set; }
 
@@ -28,8 +28,8 @@ namespace AdventOfCodeDay2
         {
             Password = password;
             RequiredLetter = requiredLetter;
-            FirstPosition = firstPosition + 1;
-            SecondPosition = secondPosition + 1;
+            FirstPosition = firstPosition - 1; //-1 because of zero based indexing.
+            SecondPosition = secondPosition - 1;
         }
 
         public static bool IsPasswordValidA(PasswordModel pModel)
