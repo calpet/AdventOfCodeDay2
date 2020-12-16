@@ -41,19 +41,16 @@ namespace AdventOfCodeDay2
         public static bool IsPasswordValidB(PasswordModel pModel)
         {
             bool isValid = false;
-            for (int i = 0; i < pModel.Password.Length; i++)
-            {
-                int firstPos = pModel.FirstPosition-1;
-                int secondPos = pModel.SecondPosition-1;
+            int firstPos = pModel.FirstPosition - 1;
+            int secondPos = pModel.SecondPosition - 1;
 
-                if (pModel.Password[firstPos] == pModel.RequiredLetter && pModel.Password[secondPos] == pModel.RequiredLetter)
-                {
-                    isValid = false;
-                } 
-                else if (pModel.Password[firstPos] == pModel.RequiredLetter || pModel.Password[secondPos] == pModel.RequiredLetter)
-                {
-                    isValid = true;
-                }
+            if (pModel.Password[firstPos] == pModel.RequiredLetter && pModel.Password[secondPos] == pModel.RequiredLetter)
+            {
+                isValid = false;
+            } 
+            else if (pModel.Password[firstPos] == pModel.RequiredLetter || pModel.Password[secondPos] == pModel.RequiredLetter)
+            {
+                isValid = true;
             }
 
             return isValid;
