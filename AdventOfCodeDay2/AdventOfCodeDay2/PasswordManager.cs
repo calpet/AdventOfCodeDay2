@@ -9,7 +9,7 @@ namespace AdventOfCodeDay2
 {
     public class PasswordManager 
     {
-        public string[] GivenPasswords()
+        public string[] GetPasswords()
         {
             string[] givenPasswords = File.ReadAllLines("Passwords.txt");
             return givenPasswords;
