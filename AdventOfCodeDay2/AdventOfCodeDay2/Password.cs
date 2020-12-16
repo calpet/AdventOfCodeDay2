@@ -35,7 +35,6 @@ namespace AdventOfCodeDay2
         public static bool IsPasswordValidA(PasswordModel pModel)
         {
             int occurenceOfLetter = pModel.Password.Count(t => t == pModel.RequiredLetter);
-
             return occurenceOfLetter >= pModel.MinimalOccurence && occurenceOfLetter <= pModel.MaximumOccurence;
         }
 
@@ -44,10 +43,14 @@ namespace AdventOfCodeDay2
             bool isValid = false;
             for (int i = 0; i < pModel.Password.Length; i++)
             {
-                int firstPos = pModel.FirstPosition;
-                int secondPos = pModel.SecondPosition;
+                int firstPos = pModel.FirstPosition-1;
+                int secondPos = pModel.SecondPosition-1;
 
-                if (pModel.Password.IndexOf(pModel.RequiredLetter) == firstPos || pModel.Password.IndexOf(pModel.RequiredLetter) == secondPos)
+                if (pModel.Password[firstPos] == pModel.RequiredLetter && pModel.Password[secondPos] == pModel.RequiredLetter)
+                {
+                    isValid = false;
+                } 
+                else if (pModel.Password[firstPos] == pModel.RequiredLetter || pModel.Password[secondPos] == pModel.RequiredLetter)
                 {
                     isValid = true;
                 }
