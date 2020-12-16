@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AdventOfCodeDay2
@@ -33,15 +34,7 @@ namespace AdventOfCodeDay2
 
         public static bool IsPasswordValidA(PasswordModel pModel)
         {
-            int occurenceOfLetter = 0;
-            for (int i = 0; i < pModel.Password.Length; i++)
-            {
-
-                if (pModel.Password[i] == pModel.RequiredLetter)
-                {
-                    occurenceOfLetter++;
-                }
-            }
+            int occurenceOfLetter = pModel.Password.Count(t => t == pModel.RequiredLetter);
 
             return occurenceOfLetter >= pModel.MinimalOccurence && occurenceOfLetter <= pModel.MaximumOccurence;
         }
