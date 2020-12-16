@@ -44,6 +44,19 @@ namespace AdventOfCodeDay2UnitTests
             Assert.AreEqual(4, result.Length);
         }
 
+        [Test]
+        public void SplitPasswordString_BadlyFormattedPasswordString_ArrayWith1Record()
+        {
+            //Arrange:
+            pwdManager = new PasswordManager();
+            string password = "9aaaaaaaaaaaaab";
+
+            //Act:
+            var result = pwdManager.SplitPasswordString(password);
+            //Assert:
+            Assert.AreEqual(1, result.Length);
+        }
+
         //569 & 346 are the correct answers for my day 2 problem, hence the specific outcome.
         [Test]
         public void StartFirstAssigment_AOCPasswordFile_569ValidPasswords()
