@@ -45,7 +45,6 @@ namespace AdventOfCodeDay2
             foreach (var pwd in passwords)
             {
                 string[] pwdString = passwordManager.SplitPasswordString(pwd);
-                //-2 is done because zero based indexing makes the conditionals go out of bounds. The -2 fixes this, but it looks a bit ugly.
                 PasswordModel pModel = new PasswordModel(Convert.ToInt32(pwdString[0]), Convert.ToInt32(pwdString[1]), Convert.ToChar(pwdString[2]), pwdString[3]);
                 pModel.IsValid = PasswordModel.IsPasswordValidB(pModel);
                 if (pModel.IsValid)
