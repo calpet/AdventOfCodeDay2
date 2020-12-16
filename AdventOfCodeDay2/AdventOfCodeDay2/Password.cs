@@ -7,12 +7,12 @@ namespace AdventOfCodeDay2
 {
     public class PasswordModel
     {
-        public string Password { get; private set; }
-        public char RequiredLetter { get; private set; }
-        public int MinimalOccurence { get; private set; }
-        public int MaximumOccurence { get; private set; }
+        public string Password { get; }
+        public char RequiredLetter { get; }
+        public int MinimalOccurence { get; }
+        public int MaximumOccurence { get; }
         public int FirstPosition { get;  }
-        public int SecondPosition { get; set; }
+        public int SecondPosition { get; }
         public bool IsValid { get; set; }
 
         public PasswordModel(int minimalOccurence, int maximumOccurence, char requiredLetter, string password, bool isValid)
