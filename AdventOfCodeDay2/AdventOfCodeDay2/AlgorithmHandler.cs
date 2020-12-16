@@ -12,7 +12,7 @@ namespace AdventOfCodeDay2
         /// </summary>
         /// <param name="passwordManager"></param>
         /// <returns>Amount of valid passwords.</returns>
-        public int StartFirstAssignment(PasswordManagerA passwordManager)
+        public int StartFirstAssignment(PasswordManager passwordManager)
         {
             int amountOfValidPasswords = 0;
 
@@ -21,11 +21,11 @@ namespace AdventOfCodeDay2
             {
                 string plainPassword = passwordManager.GetPasswordWithoutRequirements(pwd);
                 string requirement = passwordManager.SplitRequirementsFromGivenPassword(pwd);
-                int[] occurences = passwordManager.SetOccurenceOfRequirements(requirement);
+                int[] occurences = passwordManager.GetNumbersFromRequirement(requirement);
                 char reqLetter = passwordManager.GetRequirementLetter(requirement);
-                PasswordModel pModel = new PasswordModel(plainPassword, reqLetter, occurences[0], occurences[1]);
+                PasswordModel pModel = new PasswordModel(plainPassword, reqLetter, occurences[0], occurences[1], false);
 
-                pModel.IsValid = PasswordModel.IsPasswordValid(pModel);
+                pModel.IsValid = PasswordModel.IsPasswordValidA(pModel);
                 if (pModel.IsValid)
                 {
                     amountOfValidPasswords++;
@@ -35,10 +35,26 @@ namespace AdventOfCodeDay2
             return amountOfValidPasswords;
         }
 
-        public int StartSecondAssignment(PasswordManagerB passwordManager)
+        public int StartSecondAssignment(PasswordManager passwordManager)
         {
             string[] passwords = passwordManager.GivenPasswords();
-            return 1;
+            int amountOfValidPasswords = 0;
+            foreach (var pwd in passwords)
+            {
+                string plainPassword = passwordManager.GetPasswordWithoutRequirements(pwd);
+                string requirement = passwordManager.SplitRequirementsFromGivenPassword(pwd);
+                int[] positions = passwordManager.GetNumbersFromRequirement(requirement);
+                char reqLetter = passwordManager.GetRequirementLetter(requirement);
+                PasswordModel pModel = new PasswordModel(plainPassword, reqLetter, positions[0], positions[1]);
+
+                pModel.IsValid = PasswordModel.IsPasswordValidB(pModel);
+                if (pModel.IsValid)
+                {
+                    amountOfValidPasswords++;
+                }
+            }
+
+            return amountOfValidPasswords;
         }
     }
 }

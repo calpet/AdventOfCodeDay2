@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCodeDay2
 {
-    public class PasswordManagerA 
+    public class PasswordManager 
     {
         public string[] GivenPasswords()
         {
@@ -28,7 +28,7 @@ namespace AdventOfCodeDay2
             return cleanPassword;
         }
 
-        public int[] SetOccurenceOfRequirements(string requirement)
+        public int[] GetNumbersFromRequirement(string requirement)
         {
             string[] numbers = Regex.Split(requirement, @"\D+");
             int[] parsedNumbers = new int[numbers.Length];
