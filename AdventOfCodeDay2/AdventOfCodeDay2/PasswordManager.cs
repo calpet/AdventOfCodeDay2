@@ -16,8 +16,8 @@ namespace AdventOfCodeDay2
         }
         public string[] SplitPasswordString(string password)
         {
-            string[] splittedString = Regex.Split(password, @"[^0-9a-zA-Z]").Where(s => !String.IsNullOrEmpty(s)).ToArray();
-            return splittedString;
+            string[] splitString = Regex.Split(password, @"[^0-9a-zA-Z]").Where(s => !String.IsNullOrEmpty(s)).ToArray();
+            return splitString;
         }
     }
 }
