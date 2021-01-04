@@ -73,7 +73,7 @@ namespace AdventOfCodeDay2UnitTests
         }
 
         [Test]
-        public void StartSecondAssignment_AOCPasswordFile_342ValidPasswords()
+        public void StartSecondAssignment_AOCPasswordFile_346ValidPasswords()
         {
             //Arrange:
             pwdManager = new PasswordManager();
